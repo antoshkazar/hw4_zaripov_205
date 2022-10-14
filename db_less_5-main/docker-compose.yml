@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  library:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "ZARIPOV_205"
+      POSTGRES_USER: "ZARIPOV_205"
+      POSTGRES_PASSWORD: "ZARIPOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata_library"
+    volumes:
+      - ./docker/db/scripts:/library.sql
+    ports:
+      - "5432:5432"
+  station:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "ZARIPOV_205"
+      POSTGRES_USER: "ZARIPOV_205"
+      POSTGRES_PASSWORD: "ZARIPOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata_station"
+    volumes:
+      - ./docker/db/scripts:/stations.sql
+    ports:
+      - "5433:5432"
+  hospital:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "ZARIPOV_205"
+      POSTGRES_USER: "ZARIPOV_205"
+      POSTGRES_PASSWORD: "ZARIPOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata_hospital"
+    volumes:
+      - ./docker/db/scripts:/hospital.sql
+    ports:
+      - "5434:5432"
+
